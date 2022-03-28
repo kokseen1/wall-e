@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS sent (
+	item_id VARCHAR ( 255 ) NOT NULL,
+	chat_id VARCHAR ( 255 ) NOT NULL 
+);
+
+CREATE TABLE IF NOT EXISTS queries (
+	query_text VARCHAR ( 255 ) NOT NULL,
+	chat_id VARCHAR ( 255 ) NOT NULL 
+);
