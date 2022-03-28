@@ -5,8 +5,7 @@ URL_BASE = "https://www.carousell.sg/"
 URL_SEARCH = URL_BASE + "api-service/filter/cf/4.0/search/"
 LISTING_URL = "https://www.carousell.sg/p/{}"
 
-SSL_VERIFY = os.environ.get("SSL_VERIFY", "True") == "True"
-
+SSL_VERIFY = not os.environ.get("NO_SSL_VERIFY", "False").lower() in ['true']
 
 def api_search(query=None, count=None, sort=None, collection=None, min_price=None, max_price=None):
     """
@@ -78,3 +77,4 @@ def api_search(query=None, count=None, sort=None, collection=None, min_price=Non
     #     json.dump(resp.json(), f)
 
     return resp.json()
+    
