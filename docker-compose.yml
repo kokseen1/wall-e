@@ -9,6 +9,7 @@ services:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
       - POSTGRES_HOST=db
+      - SSL_VERIFY=${SSL_VERIFY}
     depends_on:
       - "db"
     restart: always
