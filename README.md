@@ -2,25 +2,25 @@
 
 ## Prerequisites
 
-Ensure that you have [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install/) installed on your machine.
+- [Docker](https://docs.docker.com/get-docker/)
+- [Docker Compose](https://docs.docker.com/compose/install/)
+- An available [Telegram Bot](https://t.me/botfather/)
 
 ### Deploying on Heroku
 
-- Ensure that you have [Heroku](https://devcenter.heroku.com/articles/heroku-cli) installed on your machine.
-- Ensure that you have [psql](https://www.postgresql.org/download/) on your machine.
+- [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli)
+- [psql](https://www.postgresql.org/download/)
 
 ## Installation
 
-Clone the repository
+Clone this repository
 
 ```shell
 git clone https://github.com/kokseen1/garbage-collector-bot.git
 cd garbage-collector-bot
 ```
 
-## Deployment
-
-### Local
+## Local Deployment
 
 Create a `.env` file
 
@@ -28,7 +28,7 @@ Create a `.env` file
 touch .env
 ```
 
-Set environment variables by adding these lines in `.env` (modify as required)
+Set environment variables by adding the following lines in `.env`
 
 ```
 BOT_TOKEN=<Telegram bot token>
@@ -44,7 +44,7 @@ Build and start the containers
 sudo docker-compose up
 ```
 
-### Heroku
+## Heroku Deployment
 
 Login to Heroku
 
@@ -65,13 +65,13 @@ Set the stack of your app to `container`
 heroku stack:set container
 ```
 
-Add the `postgresql` addon
+Add the Heroku `postgresql` addon
 
 ```shell
 heroku addons:create heroku-postgresql:hobby-dev
 ```
 
-Set the environment variables
+Set environment variables
 
 ```shell
 heroku config:set HEROKU_URL=https://<Heroku app name>.herokuapp.com/
@@ -81,7 +81,7 @@ heroku config:set POSTGRES_USER=postgres
 heroku config:set POSTGRES_PASSWORD=postgres
 ```
 
-Connect to the database
+Connect to the database via `psql`
 
 ```shell
 heroku pg:psql
@@ -99,6 +99,11 @@ CREATE TABLE queries (
 	query_text VARCHAR ( 255 ) NOT NULL,
 	chat_id VARCHAR ( 255 ) NOT NULL
 );
+```
+
+Exit from `psql`
+```shell
+exit
 ```
 
 Push to Heroku
