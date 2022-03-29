@@ -70,6 +70,21 @@ def ls(update, context):
     update.message.reply_text(queries_string)
 
 
+def force(update, context):
+    """
+    Force fetch all queries for user
+    """
+    chat_id, _ = get_message_data(update)
+    cursor.execute(f"SELECT * FROM queries WHERE chat_id='{chat_id}';")
+    record = cursor.fetchall()
+
+    for query_text, chat_id in record:
+        search_and_notify(query_text, chat_id)
+
+        # Sleep after each query
+        randsleep(1, 10)
+
+
 def search_and_notify(query_text, chat_id):
     """
     Performs an api request and notifies the user of the results
@@ -108,8 +123,9 @@ def search_and_notify(query_text, chat_id):
             bot.sendMessage(chat_id, f"{title}\n{LISTING_URL.format(item_id)}")
         except Exception as e:
             print(f"[TELEGRAM EXCEPTION] {e}")
+            # continue
 
-        # Update the database with listing
+        # Update the sent database with listing
         cursor.execute(
             f"INSERT INTO sent (item_id, chat_id) SELECT '{item_id}', '{chat_id}' WHERE NOT EXISTS (SELECT item_id FROM sent WHERE item_id='{item_id}' AND chat_id='{chat_id}');")
         connection.commit()
@@ -172,6 +188,7 @@ def main():
     updater.dispatcher.add_handler(CommandHandler("add", add))
     updater.dispatcher.add_handler(CommandHandler("rm", remove))
     updater.dispatcher.add_handler(CommandHandler("ls", ls))
+    updater.dispatcher.add_handler(CommandHandler("force", force))
 
     # Start the api polling loop in a thread
     Thread(target=main_loop).start()
