@@ -81,9 +81,6 @@ def force(update, context):
     for query_text, chat_id in record:
         search_and_notify(query_text, chat_id)
 
-        # Sleep after each query
-        randsleep(1, 10)
-
 
 def search_and_notify(query_text, chat_id):
     """
@@ -123,7 +120,7 @@ def search_and_notify(query_text, chat_id):
             bot.sendMessage(chat_id, f"{title}\n{LISTING_URL.format(item_id)}")
         except Exception as e:
             print(f"[TELEGRAM EXCEPTION] {e}")
-            # continue
+            continue
 
         # Update the sent database with listing
         cursor.execute(
@@ -209,8 +206,6 @@ def main():
 
     print("Started")
 
-    # Run the bot until the user presses Ctrl-C or the process receives SIGINT,
-    # SIGTERM or SIGABRT
     updater.idle()
 
 
