@@ -51,7 +51,7 @@ def remove(update, context):
     else:
         # Delete a specific query for user
         cursor.execute(
-            f"DELETE FROM queries WHERE query_text='{query_text}' AND chat_id='{chat_id}';")
+            f"DELETE FROM queries WHERE query_text=%s AND chat_id=%s;", (query_text, chat_id,))
     connection.commit()
 
 
@@ -124,7 +124,7 @@ def search_and_notify(query_text, chat_id):
 
         # Update the sent database with listing
         cursor.execute(
-            f"INSERT INTO sent (item_id, chat_id) SELECT '{item_id}', '{chat_id}' WHERE NOT EXISTS (SELECT item_id FROM sent WHERE item_id='{item_id}' AND chat_id='{chat_id}');")
+            f"INSERT INTO sent (item_id, chat_id) SELECT %s, %s WHERE NOT EXISTS (SELECT item_id FROM sent WHERE item_id=%s AND chat_id=%s);", (item_id, chat_id, item_id, chat_id))
         connection.commit()
 
 
@@ -142,7 +142,7 @@ def main_loop():
             search_and_notify(query_text, chat_id)
 
             # Sleep after each query
-            randsleep(1, 10)
+            randsleep(1, 5)
 
         # Sleep after each cycle
         randsleep(600, 1000)
