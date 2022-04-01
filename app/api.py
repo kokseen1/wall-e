@@ -75,6 +75,8 @@ def api_search(query=None, count=None, sort=None, collection=None, min_price=Non
     # import json
     # with open('data.json', 'w') as f:
     #     json.dump(resp.json(), f)
-
-    return resp.json()
+    try:
+        return resp.json()
+    except Exception:
+        return
     
