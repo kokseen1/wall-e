@@ -108,7 +108,7 @@ def search_and_notify(query_text, chat_id):
         cursor.execute(f"SELECT * FROM sent;")
         record = cursor.fetchall()
 
-        print(f"[SAVED_IDS] {len(record)} items")
+        # print(f"[SAVED_IDS] {len(record)} items")
 
         already_sent = (item_id, chat_id) in record
         if already_sent:
