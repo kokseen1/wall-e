@@ -69,7 +69,7 @@ def api_search(query=None, count=None, sort=None, collection=None, min_price=Non
     )
 
     print(f"[API REQUEST] {request_body}")
-    print(f"[API RESPONSE] {resp.json()}")
+    # print(f"[API RESPONSE] {resp.json()}")
 
     # For debugging
     # import json
