@@ -113,3 +113,29 @@ git push heroku main
 ```
 
 Keep the application awake via a service like [Kaffeine](https://kaffeine.herokuapp.com/)
+
+## Bot Usage
+
+Add query
+
+```
+/add <query>
+```
+
+Remove query
+
+```
+/rm <query>
+```
+
+List queries
+
+```
+/ls
+```
+
+Fetch queries
+
+```
+/force
+```
