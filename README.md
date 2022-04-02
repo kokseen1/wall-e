@@ -111,3 +111,5 @@ Push to Heroku
 ```shell
 git push heroku main
 ```
+
+Keep the application awake via a service like [Kaffeine](https://kaffeine.herokuapp.com/)
