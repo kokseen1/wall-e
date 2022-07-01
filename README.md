@@ -1,4 +1,4 @@
-# Garbage Collector Bot
+# WALL-E
 
 ## Prerequisites
 
@@ -16,8 +16,8 @@
 Clone this repository
 
 ```shell
-git clone https://github.com/kokseen1/garbage-collector-bot.git
-cd garbage-collector-bot
+git clone https://github.com/kokseen1/wall-e.git
+cd wall-e
 ```
 
 ## Local Deployment
