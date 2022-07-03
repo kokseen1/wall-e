@@ -1,6 +1,8 @@
 # WALL-E
 
-WALL-E is a self-hosted Carousell scraper that provides an intuitive Telegram interface via the Telegram Bot API. WALL-E is easily deployed via Docker Compose either on your local machine or on Heroku for free. Configurations such as the polling frequency can be tweaked by modifying the Python source code.
+WALL-E is a self-hosted Carousell scraper that provides an intuitive Telegram interface via the Telegram Bot API. 
+
+WALL-E is easily deployed via Docker Compose either on your local machine or on Heroku for free. Configurations such as the polling frequency can be tweaked by modifying the Python source code.
 
 ## Prerequisites
 
