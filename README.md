@@ -1,4 +1,4 @@
-# WALL-E
+# ![icon](https://i.imgur.com/ragyuVV.gif) WALL-E
 
 WALL-E is a self-hosted Carousell scraper that provides an intuitive Telegram interface via the Telegram Bot API. 
 
